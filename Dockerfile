@@ -18,7 +18,7 @@ RUN CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -o robot_chatgpt   main.go
 
 FROM alpine
 ENV TZ Asia/Shanghai
-COPY --from=build /project/wechatbot /project/wechatbot
+COPY --from=build /project/robot /project/robot
 
 #定义工作目录为project
 WORKDIR /project
@@ -27,4 +27,4 @@ WORKDIR /project
 #声明镜像使用80端口 并不代表可以 直接访问此端口
 EXPOSE 80
 #容器启动命令
-ENTRYPOINT  ["./wechatbot"]
+ENTRYPOINT  ["./robot"]
